@@ -1,0 +1,17 @@
+abstract class UserRepository {
+  abstract create(
+    name: string,
+    firstname: string,
+    lastname: string,
+    email: string,
+    partner: boolean,
+    money: number,
+    photo: string,
+  ): Promise<void>
+
+  abstract get(
+    email: string
+  ): Promise<void>
+}
+
+export default UserRepository

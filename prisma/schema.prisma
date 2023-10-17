@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URI")
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String?
+  firstname String?
+  lastname  String?
+  email     String? @unique
+  partner   Boolean? @default(false)
+  money     Float?
+  photo     String?
+  address   String? @default("Endereço Indefinido")
+}
+
+model Restaurant {
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
+  email          String? @unique
+  cellphone      String?
+  ownerName      String?
+  ownerLastname  String?
+  cpf            String?
+  rg             String?
+  orgaoEmissor   String?
+  cnpj           String?
+  restaurantName String?
+  telephone      String?
+  street         String?
+  city           String?
+  state          String?
+  address        Int?
+  speciality     String?
+  delivery       String?
+  stars          Float?  @default(3)
+  logo           String? @default("/assets/logo.png")
+  deliveryTime   String? @default("30min")
+}
+
+model Endereco {
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  user    String?
+  state   String?
+  city    String?
+  street  String?
+  address Int?
+}
