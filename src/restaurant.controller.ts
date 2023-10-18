@@ -1,5 +1,5 @@
 import { Controller, Get, Body, Post, Param, Res } from '@nestjs/common';
-import { CreateRestaurant, getRestaurant } from './dtos/create-restaurant';
+import { CreateRestaurant, getRestaurant } from './dtos/restaurant';
 import RestaurantRepository from './repositories/restaurant-repository';
 
 @Controller('restaurant')

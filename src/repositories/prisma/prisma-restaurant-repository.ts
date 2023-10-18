@@ -6,7 +6,7 @@ import { Injectable } from "@nestjs/common";
 export class PrismaRestaurantRepository implements RestaurantRepository {
   constructor(
     private prisma: PrismaService
-  ) {}
+  ) { }
 
   async create(
     email: string,
@@ -31,30 +31,29 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
         email: email,
         cellphone: cellphone,
         ownerName: ownerName,
-        ownerLastname: ownerLastname,  
-        cpf: cpf,            
-        rg: rg,             
-        orgaoEmissor: orgaoEmissor,   
-        cnpj: cnpj,           
-        restaurantName: restaurantName, 
-        telephone: telephone,      
-        street: street,         
-        city: city,           
-        state: state,          
-        address: address, 
-        speciality: speciality,    
+        ownerLastname: ownerLastname,
+        cpf: cpf,
+        rg: rg,
+        orgaoEmissor: orgaoEmissor,
+        cnpj: cnpj,
+        restaurantName: restaurantName,
+        telephone: telephone,
+        street: street,
+        city: city,
+        state: state,
+        address: address,
+        speciality: speciality,
         delivery: delivery
       }
     })
 
-    console.log(email)
     await this.prisma.user.update({
-       where: {
+      where: {
         email: email
-       },
-       data: {
+      },
+      data: {
         partner: true
-       }
+      }
     })
   }
 

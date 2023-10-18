@@ -60,7 +60,7 @@ model Category {
   restaurant          String?
   categoryName        String?
   categoryDescription String?
-  quantityItems       Int?
+  quantityItems       Int? @default(0)
 }
 
 model Product {

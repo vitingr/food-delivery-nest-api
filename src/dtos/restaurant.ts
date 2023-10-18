@@ -20,5 +20,5 @@ export class CreateRestaurant {
 }
 
 export class getRestaurant {
-  id: string
+  id: string;
 }
