@@ -24,7 +24,7 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
     state: string,
     address: number,
     speciality: string,
-    delivery: string
+    delivery: string,
   ): Promise<void> {
     await this.prisma.restaurant.create({
       data: {
@@ -43,18 +43,34 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
         state: state,          
         address: address, 
         speciality: speciality,    
-        delivery: delivery,       
+        delivery: delivery
       }
+    })
+
+    console.log(email)
+    await this.prisma.user.update({
+       where: {
+        email: email
+       },
+       data: {
+        partner: true
+       }
     })
   }
 
   async get(
-    id: string
-  ): Promise<void> {
-    await this.prisma.restaurant.findUnique({
+    email: string
+  ): Promise<any> {
+    const response = await this.prisma.restaurant.findUnique({
       where: {
-        id: id
+        email: email
       }
     })
+    return response
+  }
+
+  async getAllRestaurants(): Promise<any> {
+    const response = await this.prisma.restaurant.findMany()
+    return response
   }
 }

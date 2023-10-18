@@ -15,11 +15,11 @@ model User {
   name      String?
   firstname String?
   lastname  String?
-  email     String? @unique
+  email     String?  @unique
   partner   Boolean? @default(false)
   money     Float?
   photo     String?
-  address   String? @default("Endereço Indefinido")
+  address   String?  @default("Endereço Indefinido")
 }
 
 model Restaurant {
@@ -42,7 +42,8 @@ model Restaurant {
   delivery       String?
   stars          Float?  @default(3)
   logo           String? @default("/assets/logo.png")
-  deliveryTime   String? @default("30min")
+  deliveryTime   String? @default("30min - 35min")
+  deliveryValue  Float?  @default(5)
 }
 
 model Endereco {
@@ -53,3 +54,32 @@ model Endereco {
   street  String?
   address Int?
 }
+
+model Category {
+  id                  String  @id @default(auto()) @map("_id") @db.ObjectId
+  restaurant          String?
+  categoryName        String?
+  categoryDescription String?
+  quantityItems       Int?
+}
+
+model Product {
+  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
+  restaurant         String?
+  category           String?
+  productName        String?
+  productDescription String?
+  productValue       Float?
+  productFoto        String?
+}
+
+model Purchase {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  user         String?
+  restaurant   String?
+  product      String?
+  quantity     Int?    @default(1)
+  totalPrice   Float?
+  commentaries String?
+}
+ 

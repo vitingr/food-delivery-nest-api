@@ -7,9 +7,16 @@ export class RestaurantController {
 
   constructor(private restaurantRepository: RestaurantRepository) { }
 
-  @Get(':id')
-  async getRestaurant(@Param("id") id : string) {
-    const result = await this.restaurantRepository.get(id)
+  @Get('')
+  async getRestaurants() {
+    const result = await this.restaurantRepository.getAllRestaurants()
+    return JSON.stringify(result)
+  }
+
+  @Get(':email')
+  async getRestaurant(@Param("email") email : string) {
+    const result = await this.restaurantRepository.get(email)
+    return JSON.stringify(result)
   }
 
   @Post('create')

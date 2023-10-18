@@ -21,6 +21,8 @@ abstract class RestaurantRepository {
   abstract get(
     id: string
   ): Promise<void>
+
+  abstract getAllRestaurants(): Promise<void>
 }
 
 export default RestaurantRepository
