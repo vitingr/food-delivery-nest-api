@@ -31,4 +31,34 @@ export class PrismaCategoryRepository implements CategoryRepository {
       }
     })
   }
+
+  async remove(
+    id: string
+  ): Promise<void> {
+    await this.prisma.category.delete({
+      where: {
+        id: id
+      }
+    })
+  }
+
+  async update(
+    id: string,
+    restaurant: string,
+    categoryName: string,
+    categoryDescription: string,
+    quantityItems: number,
+  ): Promise<void> {
+    await this.prisma.category.update({
+      where: {
+        id: id
+      },
+      data: {
+        restaurant: restaurant,
+        categoryName: categoryName,
+        categoryDescription: categoryDescription,
+        quantityItems: quantityItems
+      }
+    })
+  }
 }
