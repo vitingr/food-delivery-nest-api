@@ -8,5 +8,5 @@ export class CreateProduct {
 }
 
 export class getProduct {
-  category: string;
+  restaurant: string;
 }

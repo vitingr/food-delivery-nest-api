@@ -6,9 +6,9 @@ import { CreateProduct } from './dtos/product';
 export class ProductController {
   constructor(private productRepository: ProductRepository) {}
 
-  @Get(':category')
-  async getProducts(@Param("category") category: string) {
-    const result = await this.productRepository.get(category)
+  @Get(':restaurant')
+  async getProducts(@Param("restaurant") restaurant: string) {
+    const result = await this.productRepository.get(restaurant)
     return JSON.stringify(result)
   }
 

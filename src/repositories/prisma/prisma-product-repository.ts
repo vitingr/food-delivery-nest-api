@@ -29,11 +29,11 @@ export class PrismaProductRepository implements ProductRepository {
   }
 
   async get(
-    category: string
+    restaurant: string
   ): Promise<any> {
     return await this.prisma.product.findMany({
       where: {
-        category: category
+        restaurant: restaurant
       }
     })
   }

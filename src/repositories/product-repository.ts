@@ -9,7 +9,7 @@ abstract class ProductRepository {
   ): Promise<void>
 
   abstract get(
-    category: string
+    restaurant: string
   ): Promise<void>
 }
 
