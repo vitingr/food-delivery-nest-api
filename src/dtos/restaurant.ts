@@ -1,6 +1,7 @@
 import { IsNotEmpty, Length } from 'class-validator'
 
 export class CreateRestaurant {
+  ownerId: string;
   email: string;
   cellphone: string;
   ownerName: string;
@@ -17,6 +18,7 @@ export class CreateRestaurant {
   address: number;
   speciality: string;
   delivery: string;
+  creatorEmail: string;
 }
 
 export class getRestaurant {

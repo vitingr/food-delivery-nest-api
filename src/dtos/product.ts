@@ -10,3 +10,15 @@ export class CreateProduct {
 export class getProduct {
   restaurant: string;
 }
+
+export class removeProduct {
+  id: string;
+}
+
+export class updateProduct {
+  id: string;
+  productName: string;
+  productDescription: string;
+  productValue: number;
+  productFoto: string;
+}

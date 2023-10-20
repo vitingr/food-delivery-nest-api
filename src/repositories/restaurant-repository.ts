@@ -1,5 +1,6 @@
 abstract class RestaurantRepository {
   abstract create(
+    ownerId: string,
     email: string,
     cellphone: string,
     ownerName: string,
@@ -15,7 +16,8 @@ abstract class RestaurantRepository {
     state: string,
     address: number,
     speciality: string,
-    delivery: string
+    delivery: string,
+    creatorEmail: string
   ): Promise<void>
 
   abstract get(

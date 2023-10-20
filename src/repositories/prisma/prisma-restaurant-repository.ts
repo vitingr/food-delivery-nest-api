@@ -9,6 +9,7 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
   ) { }
 
   async create(
+    ownerId: string,
     email: string,
     cellphone: string,
     ownerName: string,
@@ -25,9 +26,11 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
     address: number,
     speciality: string,
     delivery: string,
+    creatorEmail: string
   ): Promise<void> {
-    await this.prisma.restaurant.create({
+    const response = await this.prisma.restaurant.create({
       data: {
+        ownerId: ownerId,
         email: email,
         cellphone: cellphone,
         ownerName: ownerName,
@@ -49,20 +52,21 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
 
     await this.prisma.user.update({
       where: {
-        email: email
+        email: creatorEmail
       },
       data: {
-        partner: true
+        partner: true,
+        restaurantId: response.id
       }
     })
   }
 
   async get(
-    email: string
+    id: string
   ): Promise<any> {
     const response = await this.prisma.restaurant.findUnique({
       where: {
-        email: email
+        id: id
       }
     })
     return response

@@ -13,17 +13,17 @@ export class RestaurantController {
     return JSON.stringify(result)
   }
 
-  @Get(':email')
-  async getRestaurant(@Param("email") email : string) {
-    const result = await this.restaurantRepository.get(email)
+  @Get(':id')
+  async getRestaurant(@Param("id") id : string) {
+    const result = await this.restaurantRepository.get(id)
     return JSON.stringify(result)
   }
 
   @Post('create')
   async createRestaurant(@Body() body: CreateRestaurant) {
-    const { email, cellphone, ownerName, ownerLastname, cpf, rg, orgaoEmissor, cnpj, restaurantName, telephone, street, city, state, address, speciality, delivery } = body
+    const { ownerId, email, cellphone, ownerName, ownerLastname, cpf, rg, orgaoEmissor, cnpj, restaurantName, telephone, street, city, state, address, speciality, delivery, creatorEmail } = body
     try {
-      await this.restaurantRepository.create(email, cellphone, ownerName, ownerLastname, cpf, rg, orgaoEmissor, cnpj, restaurantName, telephone, street, city, state, address, speciality, delivery)
+      await this.restaurantRepository.create(ownerId, email, cellphone, ownerName, ownerLastname, cpf, rg, orgaoEmissor, cnpj, restaurantName, telephone, street, city, state, address, speciality, delivery, creatorEmail)
     } catch (error) {
       console.log(error)
     }

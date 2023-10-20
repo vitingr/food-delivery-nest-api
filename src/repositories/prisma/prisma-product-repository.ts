@@ -38,4 +38,34 @@ export class PrismaProductRepository implements ProductRepository {
     })
   }
 
+  async remove(
+    id: string
+  ): Promise<any> {
+    await this.prisma.product.delete({
+      where: {
+        id: id
+      }
+    })
+  }
+
+  async update(
+    id: string,
+    productName: string,
+    productDescription: string,
+    productValue: number,
+    productFoto: string,
+  ): Promise<any> {
+    await this.prisma.product.update({
+      where: {
+        id: id
+      },
+      data: {
+        productName: productName,
+        productDescription: productDescription,
+        productValue: productValue,
+        productFoto: productFoto,
+      }
+    })
+  }
+
 }
