@@ -12,10 +12,13 @@ import CategoryRepository from './repositories/category-repository';
 import { PrismaCategoryRepository } from './repositories/prisma/prisma-category-repository';
 import ProductRepository from './repositories/product-repository';
 import { PrismaProductRepository } from './repositories/prisma/prisma-product-repository';
+import { AddressController } from './address.controller';
+import AddressRepository from './repositories/address-repository';
+import { PrismaAddressRepository } from './repositories/prisma/prisma-address-repository';
 
 @Module({
   imports: [],
-  controllers: [RestaurantController, UserController, CategoryController, ProductController],
+  controllers: [RestaurantController, UserController, CategoryController, ProductController, AddressController],
   providers: [PrismaService, 
     {
       provide: RestaurantRepository, 
@@ -32,6 +35,10 @@ import { PrismaProductRepository } from './repositories/prisma/prisma-product-re
     {
       provide: ProductRepository,
       useClass: PrismaProductRepository
+    },
+    {
+      provide: AddressRepository,
+      useClass: PrismaAddressRepository
     }
   ],
 })

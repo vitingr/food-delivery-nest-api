@@ -20,7 +20,7 @@ model User {
   money        Float?
   photo        String?
   address      String?  @default("Endereço Indefinido")
-  restaurantId String? @default("")
+  restaurantId String?  @default("")
 }
 
 model Restaurant {
@@ -46,9 +46,10 @@ model Restaurant {
   logo           String? @default("/assets/logo.png")
   deliveryTime   String? @default("30min - 35min")
   deliveryValue  Float?  @default(5)
+  minValue       Float?  @default(5)
 }
 
-model Endereco {
+model Address {
   id      String  @id @default(auto()) @map("_id") @db.ObjectId
   user    String?
   state   String?
