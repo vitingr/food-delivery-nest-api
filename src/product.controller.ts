@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import ProductRepository from './repositories/product-repository';
-import { CreateProduct } from './dtos/product';
+import { CreateProduct, removeProduct, updateProduct } from './dtos/product';
 
 @Controller('product')
 export class ProductController {
-  constructor(private productRepository: ProductRepository) {}
+  constructor(private productRepository: ProductRepository) { }
 
   @Get(':restaurant')
   async getProducts(@Param("restaurant") restaurant: string) {
@@ -14,9 +14,29 @@ export class ProductController {
 
   @Post('create')
   async createProduct(@Body() body: CreateProduct) {
-    const {restaurant, category, productName, productDescription, productValue, productFoto} = body
+    const { restaurant, category, productName, productDescription, productValue, productFoto } = body
     try {
       await this.productRepository.create(restaurant, category, productName, productDescription, productValue, productFoto)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  @Post('remove')
+  async removeProduct(@Body() body: removeProduct) {
+    const { id } = body
+    try {
+      await this.productRepository.remove(id)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  @Post('update')
+  async updateProduct(@Body() body: updateProduct) {
+    const { id, productName, productDescription, productValue, productFoto } = body
+    try {
+      await this.productRepository.update(id, productName, productDescription, productValue, productFoto)
     } catch (error) {
       console.log(error)
     }
