@@ -15,10 +15,13 @@ import { PrismaProductRepository } from './repositories/prisma/prisma-product-re
 import { AddressController } from './address.controller';
 import AddressRepository from './repositories/address-repository';
 import { PrismaAddressRepository } from './repositories/prisma/prisma-address-repository';
+import { PurchaseController } from './purchase.controller';
+import { PrismaPurchaseRepository } from './repositories/prisma/prisma-purchase-repository';
+import PurchaseRepository from './repositories/purchase-repository';
 
 @Module({
   imports: [],
-  controllers: [RestaurantController, UserController, CategoryController, ProductController, AddressController],
+  controllers: [RestaurantController, UserController, CategoryController, ProductController, AddressController, PurchaseController],
   providers: [PrismaService, 
     {
       provide: RestaurantRepository, 
@@ -39,6 +42,10 @@ import { PrismaAddressRepository } from './repositories/prisma/prisma-address-re
     {
       provide: AddressRepository,
       useClass: PrismaAddressRepository
+    },
+    {
+      provide: PurchaseRepository,
+      useClass: PrismaPurchaseRepository
     }
   ],
 })

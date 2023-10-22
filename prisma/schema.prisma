@@ -77,11 +77,17 @@ model Product {
 }
 
 model Purchase {
-  id           String  @id @default(auto()) @map("_id") @db.ObjectId
-  user         String?
-  restaurant   String?
-  product      String?
-  quantity     Int?    @default(1)
-  totalPrice   Float?
-  commentaries String?
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  user            String?
+  restaurant      String?
+  products        String?
+  quantity        Int?     @default(1)
+  totalValue      Float?
+  commentaries    String?
+  paymentMethod   String?
+  takeOption      String?
+  deliveryAddress String?
+  deliveryTime    String?
+  deliveryValue   Float?
+  delivered       Boolean? @default(false)
 }
