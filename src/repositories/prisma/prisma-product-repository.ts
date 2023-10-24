@@ -26,6 +26,21 @@ export class PrismaProductRepository implements ProductRepository {
         productFoto: productFoto
       }
     })
+
+    const categoryItems = await this.prisma.category.findUnique({
+      where: {
+        id: category
+      }
+    })
+
+    await this.prisma.category.update({
+      where: {
+        id: category
+      }, 
+      data: {
+        quantityItems: categoryItems.quantityItems += 1
+      }
+    })
   }
 
   async get(

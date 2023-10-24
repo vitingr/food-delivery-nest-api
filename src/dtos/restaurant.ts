@@ -28,14 +28,9 @@ export class getRestaurant {
 export class updateRestaurant {
   id: string;
   ownerId: string;
-  email: string;
   cellphone: string;
   ownerName: string;
   ownerLastname: string;
-  cpf: string;
-  rg: string;
-  orgaoEmissor: string;
-  cnpj: string;
   restaurantName: string;
   telephone: string;
   street: string;
@@ -44,7 +39,6 @@ export class updateRestaurant {
   address: number;
   speciality: string;
   delivery: string;
-  stars: number;
   logo: string;
   deliveryTime: string;
   deliveryValue: number;
