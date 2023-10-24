@@ -10,6 +10,8 @@ abstract class AddressRepository {
   abstract get(
     userId: string
   ): Promise<void>
+
+  abstract getAllAddress(): Promise<void>
 }
 
 export default AddressRepository

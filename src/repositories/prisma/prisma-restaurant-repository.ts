@@ -76,4 +76,60 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
     const response = await this.prisma.restaurant.findMany()
     return response
   }
+
+  async updateRestaurant(
+    id: string,
+    ownerId: string,
+    email: string,
+    cellphone: string,
+    ownerName: string,
+    ownerLastname: string,
+    cpf: string,
+    rg: string,
+    orgaoEmissor: string,
+    cnpj: string,
+    restaurantName: string,
+    telephone: string,
+    street: string,
+    city: string,
+    state: string,
+    address: number,
+    speciality: string,
+    delivery: string,
+    stars: number,
+    logo: string,
+    deliveryTime: string,
+    deliveryValue: number,
+    minValue: number
+  ): Promise<void> {
+    await this.prisma.restaurant.update({
+      where: {
+        id: id
+      },
+      data: {
+        ownerId: ownerId,
+        email: email,
+        cellphone: cellphone,
+        ownerName: ownerName,
+        ownerLastname: ownerLastname,
+        cpf: cpf,
+        rg: rg,
+        orgaoEmissor: orgaoEmissor,
+        cnpj: cnpj,
+        restaurantName: restaurantName,
+        telephone: telephone,
+        street: street,
+        city: city,
+        state: state,
+        address: address,
+        speciality: speciality,
+        delivery: delivery,
+        stars: stars,
+        logo: logo,
+        deliveryTime: deliveryTime,
+        deliveryValue: deliveryValue,
+        minValue: minValue
+      }
+    })
+  }
 }

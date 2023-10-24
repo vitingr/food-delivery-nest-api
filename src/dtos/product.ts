@@ -22,3 +22,7 @@ export class updateProduct {
   productValue: number;
   productFoto: string;
 }
+
+export class getRestaurantProducts {
+  productsIds: string;
+}

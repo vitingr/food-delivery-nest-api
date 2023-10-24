@@ -35,4 +35,8 @@ export class PrismaAddressRepository implements AddressRepository {
       }
     })
   }
+
+  async getAllAddress():Promise<any> {
+    return await this.prisma.address.findMany()
+  }
 }

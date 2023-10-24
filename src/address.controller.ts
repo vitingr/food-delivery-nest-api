@@ -25,4 +25,14 @@ export class AddressController {
       console.log(error)
     }
   }
+
+  @Get('')
+  async getAllAddress() {
+    try {
+      const result = await this.addressRepository.getAllAddress()
+      return JSON.stringify(result)
+    } catch (error) {
+       console.log(error)
+    }
+  }
 }

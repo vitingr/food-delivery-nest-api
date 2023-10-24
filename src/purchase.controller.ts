@@ -25,4 +25,15 @@ export class PurchaseController {
       console.log(error)
     }
   }
+
+  
+  @Get('restaurantPurchases/:restaurantId')
+  async getRestaurantPurchases(@Param('restaurantId') restaurantId: string) {
+    try {
+      const result = await this.purchaseRepository.getRestaurantPurchases(restaurantId)
+      return JSON.stringify(result)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }

@@ -16,3 +16,7 @@ export class CreatePurchase {
 export class get {
   userId: string
 }
+
+export class getRestaurantPurchases {
+  restaurantId: string
+}

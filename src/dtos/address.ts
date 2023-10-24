@@ -9,3 +9,5 @@ export class createAddress {
 export class getAddress {
   userId: string;
 }
+
+export class getAllAddress {}

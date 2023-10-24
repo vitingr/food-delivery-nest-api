@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import ProductRepository from './repositories/product-repository';
-import { CreateProduct, removeProduct, updateProduct } from './dtos/product';
+import { CreateProduct, getRestaurantProducts, removeProduct, updateProduct } from './dtos/product';
 
 @Controller('product')
 export class ProductController {
@@ -37,6 +37,16 @@ export class ProductController {
     const { id, productName, productDescription, productValue, productFoto } = body
     try {
       await this.productRepository.update(id, productName, productDescription, productValue, productFoto)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  @Get('getRestaurantProducts/:productsIds')
+  async getAllRestaurantProducts(@Param("productsIds") productsIds: string ) {
+    try {
+      const result = await this.productRepository.getRestaurantProducts(productsIds)
+      return JSON.stringify(result)
     } catch (error) {
       console.log(error)
     }

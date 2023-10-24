@@ -4,9 +4,9 @@ import PurchaseRepository from "../purchase-repository";
 
 @Injectable()
 export class PrismaPurchaseRepository implements PurchaseRepository {
-  constructor (
+  constructor(
     private prisma: PrismaService
-  ) {}
+  ) { }
 
   async create(
     user: string,
@@ -46,6 +46,16 @@ export class PrismaPurchaseRepository implements PurchaseRepository {
     return await this.prisma.purchase.findMany({
       where: {
         user: userId
+      }
+    })
+  }
+
+  async getRestaurantPurchases(
+    restaurantId: string
+  ): Promise<any> {
+    return await this.prisma.purchase.findMany({
+      where: {
+        restaurant: restaurantId
       }
     })
   }

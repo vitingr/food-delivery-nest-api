@@ -23,6 +23,10 @@ abstract class ProductRepository {
     productValue: number,
     productFoto: string,
   ): Promise<void>
+
+  abstract getRestaurantProducts (
+    productsIds: string
+  ): Promise<void>
 }
 
 export default ProductRepository

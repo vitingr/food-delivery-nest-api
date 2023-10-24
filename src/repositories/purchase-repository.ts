@@ -16,7 +16,11 @@ abstract class PurchaseRepository {
 
   abstract get(
     userId: string
-    ): Promise<void>
+  ): Promise<void>
+
+  abstract getRestaurantPurchases (
+    restaurantId: string
+  ): Promise<void>
 }
 
 export default PurchaseRepository
