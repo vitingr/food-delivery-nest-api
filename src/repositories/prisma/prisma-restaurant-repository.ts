@@ -92,6 +92,7 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
     speciality: string,
     delivery: string,
     logo: string,
+    background: string,
     deliveryTime: string,
     deliveryValue: number,
     minValue: number
@@ -114,6 +115,7 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
         speciality: speciality,
         delivery: delivery,
         logo: logo,
+        background: background,
         deliveryTime: deliveryTime,
         deliveryValue: deliveryValue,
         minValue: minValue

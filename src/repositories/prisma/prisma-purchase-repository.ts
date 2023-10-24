@@ -38,6 +38,21 @@ export class PrismaPurchaseRepository implements PurchaseRepository {
         delivered: delivered,
       }
     })
+
+    let userInfo = await this.prisma.user.findUnique({
+      where: {
+        id: user
+      }
+    })
+
+    await this.prisma.user.update({
+      where: {
+        id: user
+      }, 
+      data: {
+        money: userInfo.money += totalValue
+      }
+    })
   }
 
   async get(

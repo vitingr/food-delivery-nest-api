@@ -44,6 +44,7 @@ model Restaurant {
   delivery       String?
   stars          Float?  @default(3)
   logo           String? @default("/assets/logo.png")
+  background     String? @default("https://www.ifood.com.br/static/images/merchant/banner/DEFAULT.png")
   deliveryTime   String? @default("30min - 35min")
   deliveryValue  Float?  @default(5)
   minValue       Float?  @default(5)

@@ -41,6 +41,7 @@ abstract class RestaurantRepository {
     speciality: string,
     delivery: string,
     logo: string,
+    background: string,
     deliveryTime: string,
     deliveryValue: number,
     minValue: number
