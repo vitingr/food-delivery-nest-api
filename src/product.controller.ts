@@ -6,6 +6,12 @@ import { CreateProduct, getRestaurantProducts, removeProduct, updateProduct } fr
 export class ProductController {
   constructor(private productRepository: ProductRepository) { }
 
+  @Get('')
+  async getAllProducts() {
+    const result = await this.productRepository.getAllProducts()
+    return JSON.stringify(result)
+  }
+
   @Get(':restaurant')
   async getProducts(@Param("restaurant") restaurant: string) {
     const result = await this.productRepository.get(restaurant)
@@ -27,7 +33,7 @@ export class ProductController {
     const { id } = body
     try {
       await this.productRepository.remove(id)
-    } catch (error) {
+    } catch (error) { 
       console.log(error)
     }
   }
@@ -45,7 +51,7 @@ export class ProductController {
   @Get('getRestaurantProducts/:productsIds')
   async getAllRestaurantProducts(@Param("productsIds") productsIds: string ) {
     try {
-      const result = await this.productRepository.getRestaurantProducts(productsIds)
+      const result = await this.productRepository.getRestaurantProducts(productsIds) 
       return JSON.stringify(result)
     } catch (error) {
       console.log(error)

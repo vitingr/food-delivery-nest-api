@@ -26,3 +26,5 @@ export class updateProduct {
 export class getRestaurantProducts {
   productsIds: string;
 }
+
+export class getAllProducts {}

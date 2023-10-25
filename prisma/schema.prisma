@@ -75,6 +75,8 @@ model Product {
   productDescription String?
   productValue       Float?
   productFoto        String?
+  sales              Int? @default(0)
+  totalSaleValue     Float? @default(0)
 }
 
 model Purchase {
