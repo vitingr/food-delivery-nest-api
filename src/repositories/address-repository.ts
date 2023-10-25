@@ -11,6 +11,10 @@ abstract class AddressRepository {
     userId: string
   ): Promise<void>
 
+  abstract getAddressById(
+    addressId: string
+  ): Promise<void>
+
   abstract getAllAddress(): Promise<void>
 }
 

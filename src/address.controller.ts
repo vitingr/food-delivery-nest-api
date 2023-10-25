@@ -26,6 +26,16 @@ export class AddressController {
     }
   }
 
+  @Get('/getAddressById/:addressId')
+  async getAddressById(@Param("addressId") addressId: string) {
+    try {
+      const result = await this.addressRepository.getAddressById(addressId)
+      return JSON.stringify(result)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   @Get('')
   async getAllAddress() {
     try {

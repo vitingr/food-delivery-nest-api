@@ -8,9 +8,9 @@ export class PurchaseController {
 
   @Post('create')
   async createPurchase(@Body() body: CreatePurchase) {
-    const { user, restaurant, products, quantity, totalValue, commentaries, paymentMethod, takeOption, deliveryAddress, deliveryTime, deliveryValue, delivered } = body
+    const { user, restaurant, products, quantity, totalValue, commentaries, paymentMethod, takeOption, deliveryAddress, deliveryPlace, restaurantLogo, restaurantName, deliveryTime, deliveryValue, delivered } = body
     try {
-      await this.purchaseRepository.create(user, restaurant, products, quantity, totalValue, commentaries, paymentMethod, takeOption, deliveryAddress, deliveryTime, deliveryValue, delivered)
+      await this.purchaseRepository.create(user, restaurant, products, quantity, totalValue, commentaries, paymentMethod, takeOption, deliveryAddress, deliveryPlace, restaurantLogo, restaurantName, deliveryTime, deliveryValue, delivered)
     } catch (error) {
       console.log(error)
     }
@@ -25,7 +25,6 @@ export class PurchaseController {
       console.log(error)
     }
   }
-
   
   @Get('restaurantPurchases/:restaurantId')
   async getRestaurantPurchases(@Param('restaurantId') restaurantId: string) {

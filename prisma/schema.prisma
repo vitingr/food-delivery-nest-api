@@ -88,6 +88,9 @@ model Purchase {
   paymentMethod   String?
   takeOption      String?
   deliveryAddress String?
+  deliveryPlace   String?
+  restaurantLogo  String?
+  restaurantName  String?
   deliveryTime    String?
   deliveryValue   Float?
   delivered       Boolean? @default(false)

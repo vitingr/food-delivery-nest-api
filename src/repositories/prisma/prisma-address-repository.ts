@@ -26,6 +26,16 @@ export class PrismaAddressRepository implements AddressRepository {
     })
   }
 
+  async getAddressById(
+    addressId: string
+  ): Promise<any> {
+    return await this.prisma.address.findUnique({
+      where: {
+        id: addressId
+      }
+    })
+  }
+
   async get(
     userId: string
   ): Promise<any> {

@@ -10,4 +10,8 @@ export class getAddress {
   userId: string;
 }
 
+export class getAddressById {
+  addressId: string;
+}
+
 export class getAllAddress {}

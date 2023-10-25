@@ -8,6 +8,9 @@ export class CreatePurchase {
   paymentMethod: string;
   takeOption: string;
   deliveryAddress: string;
+  deliveryPlace: string;
+  restaurantLogo: string;
+  restaurantName: string;
   deliveryTime: string;
   deliveryValue: number;
   delivered: boolean;
