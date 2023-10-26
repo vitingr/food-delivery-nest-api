@@ -71,6 +71,16 @@ export class PrismaPurchaseRepository implements PurchaseRepository {
     })
   }
 
+  async removePurchase(
+    purchaseId: string
+  ): Promise<void> {
+    await this.prisma.purchase.delete({
+      where: {
+        id: purchaseId
+      }
+    })
+  }
+
   async getRestaurantPurchases(
     restaurantId: string
   ): Promise<any> {

@@ -20,6 +20,10 @@ export class get {
   userId: string
 }
 
+export class removePurchase {
+  purchaseId: string
+}
+
 export class getRestaurantPurchases {
   restaurantId: string
 }

@@ -21,6 +21,10 @@ abstract class PurchaseRepository {
     userId: string
   ): Promise<void>
 
+  abstract removePurchase(
+    purchaseId: string
+  ): Promise<void>
+
   abstract getRestaurantPurchases (
     restaurantId: string
   ): Promise<void>
