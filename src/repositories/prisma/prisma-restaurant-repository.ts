@@ -122,4 +122,14 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
       }
     })
   }
+
+  async findRestaurantBySpeciality(
+    speciality: string
+  ): Promise<any> {
+    return await this.prisma.restaurant.findMany({
+      where: {
+        speciality: speciality
+      }
+    })
+  }
 }

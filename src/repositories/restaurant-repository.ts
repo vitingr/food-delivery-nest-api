@@ -46,6 +46,11 @@ abstract class RestaurantRepository {
     deliveryValue: number,
     minValue: number
   ): Promise<void>
+
+  abstract findRestaurantBySpeciality (
+    speciality: string
+  ): Promise<void>
+
 }
 
 export default RestaurantRepository

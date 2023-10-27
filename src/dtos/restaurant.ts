@@ -45,3 +45,7 @@ export class updateRestaurant {
   deliveryValue: number;
   minValue: number;
 }
+
+export class findRestaurantBySpeciality {
+  speciality: string
+}

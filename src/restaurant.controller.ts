@@ -9,14 +9,22 @@ export class RestaurantController {
 
   @Get('')
   async getRestaurants() {
-    const result = await this.restaurantRepository.getAllRestaurants()
-    return JSON.stringify(result)
+    try {
+      const result = await this.restaurantRepository.getAllRestaurants()
+      return JSON.stringify(result)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   @Get(':id')
   async getRestaurant(@Param("id") id: string) {
-    const result = await this.restaurantRepository.get(id)
-    return JSON.stringify(result)
+    try {
+      const result = await this.restaurantRepository.get(id)
+      return JSON.stringify(result)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   @Post('create')
@@ -34,6 +42,16 @@ export class RestaurantController {
     const { id, ownerId, cellphone, ownerName, ownerLastname, restaurantName, telephone, street, city, state, address, speciality, delivery, logo, background, deliveryTime, deliveryValue, minValue } = body
     try {
       await this.restaurantRepository.updateRestaurant(id, ownerId, cellphone, ownerName, ownerLastname, restaurantName, telephone, street, city, state, address, speciality, delivery, logo, background, deliveryTime, deliveryValue, minValue)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  @Get("/findRestaurantBySpeciality/:speciality")
+  async findRestaurantBySpeciality(@Param("speciality") speciality: string) {
+    try {
+      const result = await this.restaurantRepository.findRestaurantBySpeciality(speciality)
+      return JSON.stringify(result)
     } catch (error) {
       console.log(error)
     }
