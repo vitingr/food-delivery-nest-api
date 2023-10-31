@@ -21,6 +21,7 @@ model User {
   photo        String?
   address      String?  @default("Endereço Indefinido")
   restaurantId String?  @default("")
+  favorites    String?  @default("")
 }
 
 model Restaurant {
@@ -75,8 +76,8 @@ model Product {
   productDescription String?
   productValue       Float?
   productFoto        String?
-  sales              Int? @default(0)
-  totalSaleValue     Float? @default(0)
+  sales              Int?    @default(0)
+  totalSaleValue     Float?  @default(0)
 }
 
 model Purchase {

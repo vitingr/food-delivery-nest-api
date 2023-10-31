@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import ProductRepository from './repositories/product-repository';
-import { CreateProduct, getRestaurantProducts, removeProduct, updateProduct } from './dtos/product';
+import { CreateProduct, favoriteProduct, getRestaurantProducts, removeProduct, updateProduct } from './dtos/product';
 
 @Controller('product')
 export class ProductController {
@@ -33,7 +33,7 @@ export class ProductController {
     const { id } = body
     try {
       await this.productRepository.remove(id)
-    } catch (error) { 
+    } catch (error) {
       console.log(error)
     }
   }
@@ -49,10 +49,20 @@ export class ProductController {
   }
 
   @Get('getRestaurantProducts/:productsIds')
-  async getAllRestaurantProducts(@Param("productsIds") productsIds: string ) {
+  async getAllRestaurantProducts(@Param("productsIds") productsIds: string) {
     try {
-      const result = await this.productRepository.getRestaurantProducts(productsIds) 
+      const result = await this.productRepository.getRestaurantProducts(productsIds)
       return JSON.stringify(result)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  @Post('favorite')
+  async favoriteProduct(@Body() body: favoriteProduct) {
+    const { id, productId } = body
+    try {
+      await this.productRepository.favoriteProduct(id, productId)
     } catch (error) {
       console.log(error)
     }

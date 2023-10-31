@@ -28,3 +28,8 @@ export class getRestaurantProducts {
 }
 
 export class getAllProducts {}
+
+export class favoriteProduct {
+  id: string;
+  productId: string;
+}

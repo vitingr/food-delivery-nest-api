@@ -21,7 +21,7 @@ export class PrismaCategoryRepository implements CategoryRepository {
       }
     })
   }
-
+   
   async get(
     restaurant: string
   ): Promise<any> {

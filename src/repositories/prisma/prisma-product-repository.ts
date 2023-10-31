@@ -36,7 +36,7 @@ export class PrismaProductRepository implements ProductRepository {
     await this.prisma.category.update({
       where: {
         id: category
-      }, 
+      },
       data: {
         quantityItems: categoryItems.quantityItems += 1
       }
@@ -97,6 +97,35 @@ export class PrismaProductRepository implements ProductRepository {
 
   async getAllProducts(): Promise<any> {
     return await this.prisma.product.findMany()
+  }
+
+  async favoriteProduct(
+    id: string,
+    productId: string
+  ): Promise<void> {
+
+    const user = await this.prisma.user.findUnique({
+      where: {
+        id: id
+      }
+    })
+
+    let userFavorites: string
+
+    if (user.favorites != "") {
+      userFavorites = user.favorites += ` ${productId}`
+    } else {
+      userFavorites = `${productId}`
+    }
+
+    await this.prisma.user.update({
+      where: {
+        id: id
+      },
+      data: {
+        favorites: userFavorites
+      }
+    })
   }
 
 }

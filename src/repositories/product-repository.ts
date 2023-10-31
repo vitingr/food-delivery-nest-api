@@ -29,6 +29,11 @@ abstract class ProductRepository {
   ): Promise<void>
 
   abstract getAllProducts (): Promise<void>
+
+  abstract favoriteProduct(
+    id: string,
+    productId: string
+  ): Promise<void>
 }
 
 export default ProductRepository
