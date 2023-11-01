@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import UserRepository from './repositories/user-repository';
-import { CreateUser } from './dtos/user';
+import { CreateUser, UpdateUser } from './dtos/user';
 
 @Controller('user')
 export class UserController {
@@ -21,6 +21,16 @@ export class UserController {
     const { name, firstname, lastname, email, partner, money, photo } = body
     try {
       await this.userRepository.create(name, firstname, lastname, email, partner, money, photo)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  @Post('update')
+  async updateUser(@Body() body: UpdateUser) {
+    const { userId, name, firstname, lastname, photo, address } = body
+    try {
+      await this.userRepository.update(userId, name, firstname, lastname, photo, address)
     } catch (error) {
       console.log(error)
     }

@@ -7,7 +7,7 @@ import { userInfo } from "src/types";
 export class PrismaUserRepository implements UserRepository {
   constructor(
     private prisma: PrismaService
-  ) {}
+  ) { }
 
   async create(
     name: string,
@@ -42,5 +42,27 @@ export class PrismaUserRepository implements UserRepository {
     })
 
     return result
+  }
+
+  async update(
+    userId: string,
+    name: string,
+    firstname: string,
+    lastname: string,
+    photo: string,
+    address: string
+  ): Promise<void> {
+    await this.prisma.user.update({
+      where: {
+        id: userId
+      },
+      data: {
+        name: name,
+        firstname: firstname,
+        lastname: lastname,
+        photo: photo,
+        address: address
+      }
+    })
   }
 }

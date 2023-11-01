@@ -12,6 +12,15 @@ abstract class UserRepository {
   abstract get(
     email: string
   ): Promise<void>
+
+  abstract update(
+    userId: string,
+    name: string,
+    firstname: string,
+    lastname: string,
+    photo: string,
+    address: string
+  ): Promise<void>
 }
 
 export default UserRepository
