@@ -86,10 +86,13 @@ export class PrismaProductRepository implements ProductRepository {
   async getRestaurantProducts(
     productsIds: string
   ): Promise<any> {
+
+    const ids = productsIds.split(" ")
+
     return await this.prisma.product.findMany({
       where: {
         id: {
-          contains: productsIds
+          in: ids
         }
       }
     })
