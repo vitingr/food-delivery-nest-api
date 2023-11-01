@@ -47,7 +47,7 @@ export class RestaurantController {
     }
   }
 
-  @Get("/findRestaurantBySpeciality/:speciality")
+  @Get("findRestaurantBySpeciality/:speciality")
   async findRestaurantBySpeciality(@Param("speciality") speciality: string) {
     try {
       const result = await this.restaurantRepository.findRestaurantBySpeciality(speciality)
