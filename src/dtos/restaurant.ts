@@ -44,6 +44,8 @@ export class updateRestaurant {
   deliveryTime: string;
   deliveryValue: number;
   minValue: number;
+  openingHour: number;
+  closingHour: number;
 }
 
 export class findRestaurantBySpeciality {

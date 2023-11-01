@@ -44,7 +44,9 @@ abstract class RestaurantRepository {
     background: string,
     deliveryTime: string,
     deliveryValue: number,
-    minValue: number
+    minValue: number,
+    openingHour: number,
+    closingHour: number
   ): Promise<void>
 
   abstract findRestaurantBySpeciality (

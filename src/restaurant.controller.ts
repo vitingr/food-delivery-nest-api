@@ -39,9 +39,9 @@ export class RestaurantController {
 
   @Post('update')
   async updateRestaurant(@Body() body: updateRestaurant) {
-    const { id, ownerId, cellphone, ownerName, ownerLastname, restaurantName, telephone, street, city, state, address, speciality, delivery, logo, background, deliveryTime, deliveryValue, minValue } = body
+    const { id, ownerId, cellphone, ownerName, ownerLastname, restaurantName, telephone, street, city, state, address, speciality, delivery, logo, background, deliveryTime, deliveryValue, minValue, openingHour, closingHour } = body
     try {
-      await this.restaurantRepository.updateRestaurant(id, ownerId, cellphone, ownerName, ownerLastname, restaurantName, telephone, street, city, state, address, speciality, delivery, logo, background, deliveryTime, deliveryValue, minValue)
+      await this.restaurantRepository.updateRestaurant(id, ownerId, cellphone, ownerName, ownerLastname, restaurantName, telephone, street, city, state, address, speciality, delivery, logo, background, deliveryTime, deliveryValue, minValue, openingHour, closingHour)
     } catch (error) {
       console.log(error)
     }

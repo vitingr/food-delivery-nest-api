@@ -49,6 +49,8 @@ model Restaurant {
   deliveryTime   String? @default("30min - 35min")
   deliveryValue  Float?  @default(5)
   minValue       Float?  @default(5)
+  openingHour    Int?    @default(11)
+  closingHour    Int?    @default(23)
 }
 
 model Address {

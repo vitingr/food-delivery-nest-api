@@ -95,7 +95,9 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
     background: string,
     deliveryTime: string,
     deliveryValue: number,
-    minValue: number
+    minValue: number,
+    openingHour: number,
+    closingHour: number
   ): Promise<void> {
     await this.prisma.restaurant.update({
       where: {
@@ -118,7 +120,9 @@ export class PrismaRestaurantRepository implements RestaurantRepository {
         background: background,
         deliveryTime: deliveryTime,
         deliveryValue: deliveryValue,
-        minValue: minValue
+        minValue: minValue,
+        openingHour: openingHour,
+        closingHour: closingHour
       }
     })
   }
