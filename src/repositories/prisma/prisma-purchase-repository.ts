@@ -45,6 +45,19 @@ export class PrismaPurchaseRepository implements PurchaseRepository {
       }
     })
 
+    const ids = products.split(" ")
+
+    await this.prisma.product.updateMany({
+      where: {
+        id: {
+          in: ids
+        }
+      }, 
+      data: {
+        sales: { increment: 1 }
+      }
+    })
+
     let userInfo = await this.prisma.user.findUnique({
       where: {
         id: user
@@ -54,7 +67,7 @@ export class PrismaPurchaseRepository implements PurchaseRepository {
     await this.prisma.user.update({
       where: {
         id: user
-      }, 
+      },
       data: {
         money: userInfo.money += totalValue
       }
