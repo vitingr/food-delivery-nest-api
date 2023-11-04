@@ -97,3 +97,29 @@ model Purchase {
   deliveryValue   Float?
   delivered       Boolean? @default(false)
 }
+
+model Schedule {
+  id   String  @id @default(auto()) @map("_id") @db.ObjectId
+  user String?
+}
+
+model WeekDay {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  user     String?
+  schedule String?
+  day      String?
+}
+
+model DayItem {
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
+  user           String?
+  day            String?
+  restaurant     String?
+  restaurantName String?
+  productId      String?
+  productFoto    String?
+  quantityItems  Int?
+  totalValue     Float?
+  deliveryHour   Int?
+  productName    String?
+}

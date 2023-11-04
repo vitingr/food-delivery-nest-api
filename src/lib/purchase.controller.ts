@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
-import { CreatePurchase, removePurchase } from './dtos/purchase';
-import PurchaseRepository from './repositories/purchase-repository';
+import { CreatePurchase, removePurchase } from '../dtos/purchase';
+import PurchaseRepository from '../repositories/purchase-repository';
 
 @Controller('purchase')
 export class PurchaseController {

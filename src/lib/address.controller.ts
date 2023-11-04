@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
-import AddressRepository from './repositories/address-repository';
-import { createAddress } from './dtos/address';
+import AddressRepository from '../repositories/address-repository';
+import { createAddress } from '../dtos/address';
 
 @Controller('address')
 export class AddressController {

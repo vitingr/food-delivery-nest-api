@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
-import CategoryRepository from './repositories/category-repository';
-import { CreateCategory, removeCategory, updateCategory } from './dtos/category';
+import CategoryRepository from '../repositories/category-repository';
+import { CreateCategory, removeCategory, updateCategory } from '../dtos/category';
 
 @Controller('category')
 export class CategoryController {
