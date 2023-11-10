@@ -8,17 +8,18 @@ datasource db {
 }
 
 model User {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  name         String?
-  firstname    String?
-  lastname     String?
-  email        String?  @unique
-  partner      Boolean? @default(false)
-  money        Float?
-  photo        String?
-  address      String?  @default("Endereço Indefinido")
-  restaurantId String?  @default("")
-  favorites    String?  @default("")
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  name            String?
+  firstname       String?
+  lastname        String?
+  email           String?  @unique
+  partner         Boolean? @default(false)
+  money           Float?
+  photo           String?
+  address         String?  @default("Endereço Indefinido")
+  restaurantId    String?  @default("")
+  favorites       String?  @default("")
+  quantityCoupons Int?     @default(0)
 }
 
 model Restaurant {
@@ -122,4 +123,13 @@ model DayItem {
   totalValue     Float?
   deliveryHour   Int?
   productName    String?
+}
+
+model Coupon {
+  id            String  @id @default(auto()) @map("_id") @db.ObjectId
+  user          String?
+  couponName    String?
+  couponDesc    String?
+  couponType    String?
+  discountValue Float?
 }
