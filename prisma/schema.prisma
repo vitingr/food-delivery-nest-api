@@ -23,32 +23,34 @@ model User {
 }
 
 model Restaurant {
-  id             String  @id @default(auto()) @map("_id") @db.ObjectId
-  ownerId        String?
-  email          String? @unique
-  cellphone      String?
-  ownerName      String?
-  ownerLastname  String?
-  cpf            String?
-  rg             String?
-  orgaoEmissor   String?
-  cnpj           String?
-  restaurantName String?
-  telephone      String?
-  street         String?
-  city           String?
-  state          String?
-  address        Int?
-  speciality     String?
-  delivery       String?
-  stars          Float?  @default(3)
-  logo           String? @default("/assets/logo.png")
-  background     String? @default("https://www.ifood.com.br/static/images/merchant/banner/DEFAULT.png")
-  deliveryTime   String? @default("30min - 35min")
-  deliveryValue  Float?  @default(5)
-  minValue       Float?  @default(5)
-  openingHour    Int?    @default(11)
-  closingHour    Int?    @default(23)
+  id                    String  @id @default(auto()) @map("_id") @db.ObjectId
+  ownerId               String?
+  email                 String? @unique
+  cellphone             String?
+  ownerName             String?
+  ownerLastname         String?
+  cpf                   String?
+  rg                    String?
+  orgaoEmissor          String?
+  cnpj                  String?
+  restaurantName        String?
+  telephone             String?
+  street                String?
+  city                  String?
+  state                 String?
+  address               Int?
+  speciality            String?
+  delivery              String?
+  stars                 Float?  @default(3)
+  logo                  String? @default("/assets/logo.png")
+  background            String? @default("https://www.ifood.com.br/static/images/merchant/banner/DEFAULT.png")
+  deliveryTime          String? @default("30min - 35min")
+  deliveryValue         Float?  @default(5)
+  minValue              Float?  @default(5)
+  openingHour           Int?    @default(11)
+  closingHour           Int?    @default(23)
+  quantityAvaliations   Int?    @default(1)
+  totalAvaliationPoints Int?    @default(3)
 }
 
 model Address {
@@ -132,4 +134,15 @@ model Coupon {
   couponDesc    String?
   couponType    String?
   discountValue Float?
+}
+
+model Avaliation {
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
+  user           String?
+  restaurant     String?
+  restaurantName String?
+  username       String?
+  stars          Int?
+  avaliationText String?
+  data           String?
 }
