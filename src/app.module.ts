@@ -27,10 +27,13 @@ import { PrismaScheduleRepository } from './repositories/prisma/prisma-schedule-
 import { AvaliationController } from './lib/avaliation.controller';
 import AvaliationRepository from './repositories/avaliation-repository';
 import { PrismaAvaliationRepository } from './repositories/prisma/prisma-avaliation-repository';
+import { SearchController } from './lib/search.controller';
+import searchRepository from './repositories/search-repository';
+import { prismaSearchRepository } from './repositories/prisma/prisma.search-repository';
 
 @Module({
   imports: [],
-  controllers: [RestaurantController, UserController, CategoryController, ProductController, AddressController, PurchaseController, ScheduleController, DayitemController, AvaliationController],
+  controllers: [RestaurantController, UserController, CategoryController, ProductController, AddressController, PurchaseController, ScheduleController, DayitemController, AvaliationController, SearchController],
   providers: [PrismaService, 
     {
       provide: RestaurantRepository, 
@@ -67,6 +70,10 @@ import { PrismaAvaliationRepository } from './repositories/prisma/prisma-avaliat
     {
       provide: AvaliationRepository,
       useClass: PrismaAvaliationRepository
+    },
+    {
+      provide: searchRepository,
+      useClass: prismaSearchRepository
     }
   ],
 })
