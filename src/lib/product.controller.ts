@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import ProductRepository from '../repositories/product-repository';
-import { CreateProduct, favoriteProduct, getRestaurantProducts, removeProduct, updateProduct } from '../dtos/product';
+import { CreateProduct, favoriteProduct, getRestaurantProducts, removeFavorite, removeProduct, updateProduct } from '../dtos/product';
 
 @Controller('product')
 export class ProductController {
@@ -63,6 +63,16 @@ export class ProductController {
     const { id, productId } = body
     try {
       await this.productRepository.favoriteProduct(id, productId)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  @Post('removeFavorite')
+  async removeFavoriteProduct(@Body() body: removeFavorite) {
+    const { id, productId } = body
+    try {
+      await this.productRepository.removeFavorite(id, productId)
     } catch (error) {
       console.log(error)
     }

@@ -13,26 +13,37 @@ export class prismaSearchRepository implements searchRepository {
   ): Promise<any> {
 
     let items = []
+
     
-    const products = await this.prisma.product.findMany({
-      where: {
-        productName: {
-          contains: text
+    try {
+      const products = await this.prisma.product.findMany({
+        where: {
+          productName: {
+            contains: text,
+            mode: "insensitive"
+          }
         }
+      })
+      if (products.length >= 1) {
+        items.push(products)
       }
-    })
-    items.push(products)
 
-    const restaurants = await this.prisma.restaurant.findMany({
-      where: {
-        restaurantName: {
-          contains: text
+      const restaurants = await this.prisma.restaurant.findMany({
+        where: {
+          restaurantName: {
+            contains: text,
+            mode: "insensitive"
+          }
         }
+      })
+      if (restaurants.length >= 1) {
+        items.push(restaurants)
       }
-    })
-    items.push(restaurants)
 
-    return items
+      return items
 
+    } catch (error) {
+      console.log(error)
+    }
   }
 }

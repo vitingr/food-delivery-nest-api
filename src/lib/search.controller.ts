@@ -5,11 +5,15 @@ import searchRepository from 'src/repositories/search-repository';
 export class SearchController {
   constructor (private searchRepository: searchRepository) {}
 
-  @Post(':text')
+  @Get(':text')
   async getItemsByText(@Param("text") text: string) {
     try {
-      const response = await this.searchRepository.search(text)
-      return JSON.stringify(response)
+      if (typeof text !== "string") {
+        console.log("Invalid Request")
+      } else {
+        const response = await this.searchRepository.search(text)
+        return JSON.stringify(response)
+      }
     } catch (error) {
       console.log(error)
     }

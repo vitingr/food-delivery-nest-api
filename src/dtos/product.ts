@@ -33,3 +33,8 @@ export class favoriteProduct {
   id: string;
   productId: string;
 }
+
+export class removeFavorite {
+  id: string;
+  productId: string;
+}

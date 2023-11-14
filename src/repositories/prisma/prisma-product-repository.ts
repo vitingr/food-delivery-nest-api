@@ -112,7 +112,6 @@ export class PrismaProductRepository implements ProductRepository {
         id: id
       }
     })
-
     let userFavorites: string
 
     if (user.favorites != "") {
@@ -127,6 +126,35 @@ export class PrismaProductRepository implements ProductRepository {
       },
       data: {
         favorites: userFavorites
+      }
+    })
+  }
+
+  async removeFavorite(
+    id: string,
+    productId: string
+  ): Promise<void> {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        id: id
+      }
+    })
+    let favorites: string
+
+    if (user.favorites != "") {
+      const currentUserFavorites = user.favorites.split(" ")
+      const favoriteIndex = currentUserFavorites.indexOf(productId)
+
+      currentUserFavorites.splice(favoriteIndex, 1)
+      favorites = currentUserFavorites.join(" ")
+    }
+
+    await this.prisma.user.update({
+      where: {
+        id: id
+      },
+      data: {
+        favorites: favorites
       }
     })
   }

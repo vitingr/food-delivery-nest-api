@@ -34,6 +34,11 @@ abstract class ProductRepository {
     id: string,
     productId: string
   ): Promise<void>
+
+  abstract removeFavorite(
+    id: string,
+    productId: string
+  ): Promise<void>
 }
 
 export default ProductRepository
