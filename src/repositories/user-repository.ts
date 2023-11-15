@@ -21,6 +21,14 @@ abstract class UserRepository {
     photo: string,
     address: string
   ): Promise<void>
+
+  abstract viewNavbar(
+    userId: string
+  ): Promise<void>
+
+  abstract viewRoutine(
+    userId: string
+  ): Promise<void>
 }
 
 export default UserRepository

@@ -65,4 +65,30 @@ export class PrismaUserRepository implements UserRepository {
       }
     })
   }
+
+  async viewNavbar(
+    userId: string
+  ): Promise<void> {
+    await this.prisma.user.update({
+      where: {
+        id: userId
+      }, 
+      data: {
+        driverMenu: true
+      }
+    })
+  }
+
+  async viewRoutine(
+    userId: string
+  ): Promise<void> {
+    await this.prisma.user.update({
+      where: {
+        id: userId
+      }, 
+      data: {
+        driverRoutine: true
+      }
+    })
+  }
 }

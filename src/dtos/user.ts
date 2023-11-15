@@ -20,3 +20,11 @@ export class UpdateUser {
   photo: string;
   address: string
 }
+
+export class viewNavbar {
+  userId: string;
+}
+
+export class viewRoutine {
+  userId: string;
+}

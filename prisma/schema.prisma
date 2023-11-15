@@ -20,6 +20,8 @@ model User {
   restaurantId    String?  @default("")
   favorites       String?  @default("")
   quantityCoupons Int?     @default(0)
+  driverMenu      Boolean? @default(false)
+  driverRoutine   Boolean? @default(false)
 }
 
 model Restaurant {
