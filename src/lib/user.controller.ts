@@ -42,7 +42,7 @@ export class UserController {
     try {
       await this.userRepository.viewNavbar(userId)
     } catch (error) {
-      console.log(error)
+      console.log(error) 
     }
   }
 
