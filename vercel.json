@@ -1,16 +1,16 @@
 {
   "version": 2,
+  "functions": [
+    {
+      "includeFiles": ["prisma/**"],
+      "src": "dist/*.js"
+    }
+  ],
   "builds": [
     {
       "src": "dist/main.js",
       "use": "@vercel/node",
-      "config": { "maxLambdaSize": "2048MB" },
-      "functions": [
-        {
-          "includeFiles": ["prisma/**"],
-          "src": "dist/*.js"
-        }
-      ]
+      "config": { "maxLambdaSize": "2048MB" }
     }
   ],
   "routes": [
