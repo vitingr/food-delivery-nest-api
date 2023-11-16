@@ -1,11 +1,11 @@
 export class createSchedule {
-  userId: string;
+  userId: string
 }
 
 export class removeSchedule {
-  userId: string;
+  userId: string
 }
 
 export class get {
-  userId: string;
+  userId: string
 }

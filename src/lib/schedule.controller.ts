@@ -34,6 +34,5 @@ export class ScheduleController {
     } catch (error) {
       console.log(error)
     }
-  }
+  }  
 }
-     
